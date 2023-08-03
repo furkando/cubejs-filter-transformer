@@ -1,7 +1,7 @@
 # Cube.js Filter to JS Filter Function
 
 [![npm version](https://img.shields.io/npm/v/cubejs-filter-transformer.svg?style=flat-square)](https://www.npmjs.com/package/cubejs-filter-transformer)
-[![license](https://img.shields.io/github/license/yourusername/cubejs-filter-transformer.svg?style=flat-square)](https://github.com/furkandoganktf/cubejs-filter-transformer/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/furkandoganktf/cubejs-filter-transformer.svg?style=flat-square)](https://github.com/furkandoganktf/cubejs-filter-transformer/blob/main/LICENSE)
 
 This package provides a utility function to transform a Cube.js filter into a JavaScript filter function. The transformed filter function can be used to filter data based on the given filter criteria.
 
