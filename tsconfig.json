@@ -9,5 +9,6 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently */
   },
-  "include": ["src"]
+  "include": ["src"],
+  "files": ["src/index.ts"]
 }
