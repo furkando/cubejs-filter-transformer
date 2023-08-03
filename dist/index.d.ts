@@ -20,6 +20,6 @@ type FilterFunction<T> = (item: T) => boolean;
  * console.log(filteredData);
  * // [{ status: 'shipped' }, { status: 'shipped' }]
  */
-export declare const transformCubeFilterToJsFilter: <T>(filter: Filter) => FilterFunction<T>;
-export declare const transformCubeFiltersToJsFilter: <T>(filters: Filter[]) => FilterFunction<T>;
+export declare function transformCubeFilterToJsFilter<T>(filter: Filter): FilterFunction<T>;
+export declare function transformCubeFiltersToJsFilter<T>(filters: Filter[]): FilterFunction<T>;
 export {};

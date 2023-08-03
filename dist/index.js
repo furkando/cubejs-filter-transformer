@@ -26,7 +26,7 @@ var enums_1 = require("./enums");
  * console.log(filteredData);
  * // [{ status: 'shipped' }, { status: 'shipped' }]
  */
-var transformCubeFilterToJsFilter = function (filter) {
+function transformCubeFilterToJsFilter(filter) {
     if (enums_1.CubeFilterFieldType.VALUES in filter) {
         var member_1 = filter.member, operator = filter.operator, values_1 = filter.values;
         switch (operator) {
@@ -109,21 +109,21 @@ var transformCubeFilterToJsFilter = function (filter) {
     }
     if (enums_1.CubeFilterFieldType.AND in filter) {
         var and = filter.and;
-        var filterFunctions_1 = and.map(function (f) { return (0, exports.transformCubeFilterToJsFilter)(f); });
+        var filterFunctions_1 = and.map(function (f) { return transformCubeFilterToJsFilter(f); });
         return function (item) { return filterFunctions_1.every(function (fn) { return fn(item); }); };
     }
     if (enums_1.CubeFilterFieldType.OR in filter) {
         var or = filter.or;
-        var filterFunctions_2 = or.map(function (f) { return (0, exports.transformCubeFilterToJsFilter)(f); });
+        var filterFunctions_2 = or.map(function (f) { return transformCubeFilterToJsFilter(f); });
         return function (item) { return filterFunctions_2.some(function (fn) { return fn(item); }); };
     }
     throw new Error("Unsupported filter type: ".concat(JSON.stringify(filter)));
-};
+}
 exports.transformCubeFilterToJsFilter = transformCubeFilterToJsFilter;
-var transformCubeFiltersToJsFilter = function (filters) {
+function transformCubeFiltersToJsFilter(filters) {
     var filterFunctions = filters.map(function (f) {
-        return (0, exports.transformCubeFilterToJsFilter)(f);
+        return transformCubeFilterToJsFilter(f);
     });
     return function (item) { return filterFunctions.every(function (fn) { return fn(item); }); };
-};
+}
 exports.transformCubeFiltersToJsFilter = transformCubeFiltersToJsFilter;

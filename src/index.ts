@@ -29,9 +29,9 @@ type FilterFunction<T> = (item: T) => boolean;
  * console.log(filteredData);
  * // [{ status: 'shipped' }, { status: 'shipped' }]
  */
-export const transformCubeFilterToJsFilter = <T>(
+export function transformCubeFilterToJsFilter<T>(
   filter: Filter
-): FilterFunction<T> => {
+): FilterFunction<T> {
   if (CubeFilterFieldType.VALUES in filter) {
     const { member, operator, values } = filter;
 
@@ -115,13 +115,13 @@ export const transformCubeFilterToJsFilter = <T>(
   }
 
   throw new Error(`Unsupported filter type: ${JSON.stringify(filter)}`);
-};
+}
 
-export const transformCubeFiltersToJsFilter = <T>(
+export function transformCubeFiltersToJsFilter<T>(
   filters: Filter[]
-): FilterFunction<T> => {
+): FilterFunction<T> {
   const filterFunctions = filters.map((f) =>
     transformCubeFilterToJsFilter<T>(f)
   );
   return (item: T) => filterFunctions.every((fn) => fn(item));
-};
+}
