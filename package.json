@@ -1,6 +1,6 @@
 {
   "name": "cubejs-filter-transformer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transformer function that transforms a Cube.js filter to a JavaScript filter function.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
