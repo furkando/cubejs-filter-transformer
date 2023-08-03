@@ -1,0 +1,30 @@
+{
+  "name": "cubejs-filter-transformer",
+  "version": "1.0.0",
+  "description": "Transformer function that transforms a Cube.js filter to a JavaScript filter function.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/furkandoganktf/cubejs-filter-transformer.git"
+  },
+  "keywords": [
+    "cubejs",
+    "filter",
+    "transformer",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Furkan Dogan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/furkandoganktf/cubejs-filter-transformer/issues"
+  },
+  "homepage": "https://github.com/furkandoganktf/cubejs-filter-transformer#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
