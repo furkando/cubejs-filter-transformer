@@ -1,4 +1,7 @@
-export var CubeOperatorType;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CubeFilterFieldType = exports.CubeOperatorType = void 0;
+var CubeOperatorType;
 (function (CubeOperatorType) {
     CubeOperatorType["EQUALS"] = "equals";
     CubeOperatorType["NOT_EQUALS"] = "notEquals";
@@ -18,13 +21,13 @@ export var CubeOperatorType;
     CubeOperatorType["AFTER_DATE"] = "afterDate";
     CubeOperatorType["SET"] = "set";
     CubeOperatorType["NOT_SET"] = "notSet";
-})(CubeOperatorType || (CubeOperatorType = {}));
-export var CubeFilterFieldType;
+})(CubeOperatorType || (exports.CubeOperatorType = CubeOperatorType = {}));
+var CubeFilterFieldType;
 (function (CubeFilterFieldType) {
     CubeFilterFieldType["AND"] = "and";
     CubeFilterFieldType["OR"] = "or";
     CubeFilterFieldType["VALUES"] = "values";
     CubeFilterFieldType["OPERATOR"] = "operator";
     CubeFilterFieldType["MEMBER"] = "member";
-})(CubeFilterFieldType || (CubeFilterFieldType = {}));
+})(CubeFilterFieldType || (exports.CubeFilterFieldType = CubeFilterFieldType = {}));
 //# sourceMappingURL=enums.js.map

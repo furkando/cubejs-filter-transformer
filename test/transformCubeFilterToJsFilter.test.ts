@@ -4,11 +4,11 @@ import {
   LogicalOrFilter,
   UnaryFilter,
 } from "@cubejs-client/core";
-import { CubeOperatorType } from "./enums";
+import { CubeOperatorType } from "../src/enums";
 import {
   transformCubeFilterToJsFilter,
   transformCubeFiltersToJsFilter,
-} from "./index"; // Update the import path based on your file structure
+} from "../src/index"; // Update the import path based on your file structure
 
 describe("transformCubeFilterToJsFilter", () => {
   it("should handle CubeOperatorType.EQUALS correctly", () => {

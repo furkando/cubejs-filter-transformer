@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "incremental": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "files": ["src/index.ts"]
+  "include": ["src/**/*", "test/**/*"]
 }

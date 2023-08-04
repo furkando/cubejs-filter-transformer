@@ -1,10 +1,9 @@
 {
   "name": "cubejs-filter-transformer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Transformer function that transforms a Cube.js filter to a JavaScript filter function.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "build": "npx tsc",
     "test": "jest"
@@ -19,6 +18,12 @@
     "transformer",
     "javascript",
     "typescript"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "package.json"
   ],
   "author": "Furkan Dogan",
   "license": "ISC",

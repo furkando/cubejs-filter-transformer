@@ -1,338 +1,340 @@
-import { CubeOperatorType } from "./enums";
-import { transformCubeFilterToJsFilter, transformCubeFiltersToJsFilter, } from "./index"; // Update the import path based on your file structure
-describe("transformCubeFilterToJsFilter", () => {
-    it("should handle CubeOperatorType.EQUALS correctly", () => {
-        const filter = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var enums_1 = require("../src/enums");
+var index_1 = require("../src/index"); // Update the import path based on your file structure
+describe("transformCubeFilterToJsFilter", function () {
+    it("should handle CubeOperatorType.EQUALS correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.EQUALS,
+            operator: enums_1.CubeOperatorType.EQUALS,
             values: ["value"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(true);
         expect(filterFunction({ field: "otherValue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.EQUALS correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.EQUALS correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.EQUALS,
+            operator: enums_1.CubeOperatorType.EQUALS,
             values: ["value", "otherValue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(true);
         expect(filterFunction({ field: "otherValue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_EQUALS correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_EQUALS correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_EQUALS,
+            operator: enums_1.CubeOperatorType.NOT_EQUALS,
             values: ["value"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(false);
         expect(filterFunction({ field: "otherValue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_EQUALS correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_EQUALS correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_EQUALS,
+            operator: enums_1.CubeOperatorType.NOT_EQUALS,
             values: ["value", "otherValue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(false);
         expect(filterFunction({ field: "otherValue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.CONTAINS correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.CONTAINS correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.CONTAINS,
+            operator: enums_1.CubeOperatorType.CONTAINS,
             values: ["value"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(true);
         expect(filterFunction({ field: "otherValue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.CONTAINS correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.CONTAINS correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.CONTAINS,
+            operator: enums_1.CubeOperatorType.CONTAINS,
             values: ["value", "otherValue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(true);
         expect(filterFunction({ field: "otherValue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_CONTAINS correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_CONTAINS correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_CONTAINS,
+            operator: enums_1.CubeOperatorType.NOT_CONTAINS,
             values: ["value"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(false);
         expect(filterFunction({ field: "otherValue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_CONTAINS correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_CONTAINS correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_CONTAINS,
+            operator: enums_1.CubeOperatorType.NOT_CONTAINS,
             values: ["value", "otherValue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "value" })).toBe(false);
         expect(filterFunction({ field: "otherValue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.STARTS_WITH correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.STARTS_WITH correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.STARTS_WITH,
+            operator: enums_1.CubeOperatorType.STARTS_WITH,
             values: ["val"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "va" })).toBe(false);
         expect(filterFunction({ field: "valuetest" })).toBe(true);
     });
-    it("should handle CubeOperatorType.STARTS_WITH correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.STARTS_WITH correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.STARTS_WITH,
+            operator: enums_1.CubeOperatorType.STARTS_WITH,
             values: ["val", "va"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "va" })).toBe(true);
         expect(filterFunction({ field: "valuetest" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_STARTS_WITH correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_STARTS_WITH correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_STARTS_WITH,
+            operator: enums_1.CubeOperatorType.NOT_STARTS_WITH,
             values: ["val"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "va" })).toBe(true);
         expect(filterFunction({ field: "valuetest" })).toBe(false);
     });
-    it("should handle CubeOperatorType.NOT_STARTS_WITH correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_STARTS_WITH correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_STARTS_WITH,
+            operator: enums_1.CubeOperatorType.NOT_STARTS_WITH,
             values: ["val", "va"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "va" })).toBe(false);
         expect(filterFunction({ field: "valuetest" })).toBe(false);
     });
-    it("should handle CubeOperatorType.ENDS_WITH correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.ENDS_WITH correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.ENDS_WITH,
+            operator: enums_1.CubeOperatorType.ENDS_WITH,
             values: ["ue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "values" })).toBe(false);
         expect(filterFunction({ field: "testvalue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.ENDS_WITH correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.ENDS_WITH correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.ENDS_WITH,
+            operator: enums_1.CubeOperatorType.ENDS_WITH,
             values: ["ue", "es"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "es" })).toBe(true);
         expect(filterFunction({ field: "testvalue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_ENDS_WITH correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_ENDS_WITH correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_ENDS_WITH,
+            operator: enums_1.CubeOperatorType.NOT_ENDS_WITH,
             values: ["ue"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "values" })).toBe(true);
         expect(filterFunction({ field: "testvalue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.NOT_ENDS_WITH correctly with multiple values", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_ENDS_WITH correctly with multiple values", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_ENDS_WITH,
+            operator: enums_1.CubeOperatorType.NOT_ENDS_WITH,
             values: ["ue", "es"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "es" })).toBe(false);
         expect(filterFunction({ field: "testvalue" })).toBe(false);
     });
-    it("should handle CubeOperatorType.GT correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.GT correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.GT,
+            operator: enums_1.CubeOperatorType.GT,
             values: ["5"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: 10 })).toBe(true);
         expect(filterFunction({ field: 3 })).toBe(false);
     });
-    it("should handle CubeOperatorType.GTE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.GTE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.GTE,
+            operator: enums_1.CubeOperatorType.GTE,
             values: ["5"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: 10 })).toBe(true);
         expect(filterFunction({ field: 5 })).toBe(true);
         expect(filterFunction({ field: 3 })).toBe(false);
     });
-    it("should handle CubeOperatorType.LT correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.LT correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.LT,
+            operator: enums_1.CubeOperatorType.LT,
             values: ["5"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: 3 })).toBe(true);
         expect(filterFunction({ field: 7 })).toBe(false);
     });
-    it("should handle CubeOperatorType.LTE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.LTE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.LTE,
+            operator: enums_1.CubeOperatorType.LTE,
             values: ["5"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: 3 })).toBe(true);
         expect(filterFunction({ field: 5 })).toBe(true);
         expect(filterFunction({ field: 7 })).toBe(false);
     });
-    it("should handle CubeOperatorType.IN_DATE_RANGE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.IN_DATE_RANGE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.IN_DATE_RANGE,
+            operator: enums_1.CubeOperatorType.IN_DATE_RANGE,
             values: ["2023-01-01", "2023-12-31"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "2023-06-15" })).toBe(true);
         expect(filterFunction({ field: "2022-06-15" })).toBe(false);
     });
-    it("should handle CubeOperatorType.NOT_IN_DATE_RANGE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_IN_DATE_RANGE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_IN_DATE_RANGE,
+            operator: enums_1.CubeOperatorType.NOT_IN_DATE_RANGE,
             values: ["2023-01-01", "2023-12-31"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "2023-06-15" })).toBe(false);
         expect(filterFunction({ field: "2022-06-15" })).toBe(true);
     });
-    it("should handle CubeOperatorType.BEFORE_DATE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.BEFORE_DATE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.BEFORE_DATE,
+            operator: enums_1.CubeOperatorType.BEFORE_DATE,
             values: ["2023-01-01"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "2022-06-15" })).toBe(true);
         expect(filterFunction({ field: "2023-06-15" })).toBe(false);
     });
-    it("should handle CubeOperatorType.AFTER_DATE correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.AFTER_DATE correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.AFTER_DATE,
+            operator: enums_1.CubeOperatorType.AFTER_DATE,
             values: ["2023-01-01"],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: "2022-06-15" })).toBe(false);
         expect(filterFunction({ field: "2023-06-15" })).toBe(true);
     });
-    it("should handle CubeOperatorType.SET correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.SET correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.SET,
+            operator: enums_1.CubeOperatorType.SET,
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: null })).toBe(false);
         expect(filterFunction({ field: "someValue" })).toBe(true);
     });
-    it("should handle CubeOperatorType.NOT_SET correctly", () => {
-        const filter = {
+    it("should handle CubeOperatorType.NOT_SET correctly", function () {
+        var filter = {
             member: "field",
-            operator: CubeOperatorType.NOT_SET,
+            operator: enums_1.CubeOperatorType.NOT_SET,
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field: null })).toBe(true);
         expect(filterFunction({ field: "someValue" })).toBe(false);
     });
-    it("should handle LogicalAndFilter correctly", () => {
-        const filter = {
+    it("should handle LogicalAndFilter correctly", function () {
+        var filter = {
             and: [
                 {
                     member: "field1",
-                    operator: CubeOperatorType.EQUALS,
+                    operator: enums_1.CubeOperatorType.EQUALS,
                     values: ["value1"],
                 },
                 {
                     member: "field2",
-                    operator: CubeOperatorType.EQUALS,
+                    operator: enums_1.CubeOperatorType.EQUALS,
                     values: ["value2"],
                 },
             ],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field1: "value1", field2: "value2" })).toBe(true);
         expect(filterFunction({ field1: "value1", field2: "wrongValue" })).toBe(false);
     });
-    it("should handle LogicalOrFilter correctly", () => {
-        const filter = {
+    it("should handle LogicalOrFilter correctly", function () {
+        var filter = {
             or: [
                 {
                     member: "field1",
-                    operator: CubeOperatorType.EQUALS,
+                    operator: enums_1.CubeOperatorType.EQUALS,
                     values: ["value1"],
                 },
                 {
                     member: "field2",
-                    operator: CubeOperatorType.EQUALS,
+                    operator: enums_1.CubeOperatorType.EQUALS,
                     values: ["value2"],
                 },
             ],
         };
-        const filterFunction = transformCubeFilterToJsFilter(filter);
+        var filterFunction = (0, index_1.transformCubeFilterToJsFilter)(filter);
         expect(filterFunction({ field1: "value1" })).toBe(true);
         expect(filterFunction({ field2: "value2" })).toBe(true);
         expect(filterFunction({ field1: "wrongValue", field2: "value2" })).toBe(true);
         expect(filterFunction({ field1: "wrongValue", field2: "wrongValue" })).toBe(false);
     });
 });
-describe("transformCubeFiltersToJsFilter", () => {
-    it("should handle multiple filters with AND logic correctly", () => {
-        const filters = [
+describe("transformCubeFiltersToJsFilter", function () {
+    it("should handle multiple filters with AND logic correctly", function () {
+        var filters = [
             {
                 member: "field1",
-                operator: CubeOperatorType.EQUALS,
+                operator: enums_1.CubeOperatorType.EQUALS,
                 values: ["value1"],
             },
             {
                 member: "field2",
-                operator: CubeOperatorType.EQUALS,
+                operator: enums_1.CubeOperatorType.EQUALS,
                 values: ["value2"],
             },
         ];
-        const filterFunction = transformCubeFiltersToJsFilter(filters);
+        var filterFunction = (0, index_1.transformCubeFiltersToJsFilter)(filters);
         expect(filterFunction({ field1: "value1", field2: "value2" })).toBe(true);
         expect(filterFunction({ field1: "value1", field2: "wrongValue" })).toBe(false);
         expect(filterFunction({ field1: "wrongValue", field2: "value2" })).toBe(false);
     });
-    it("should handle nested AND and OR filters correctly", () => {
-        const filters = [
+    it("should handle nested AND and OR filters correctly", function () {
+        var filters = [
             {
                 and: [
                     {
                         member: "field1",
-                        operator: CubeOperatorType.EQUALS,
+                        operator: enums_1.CubeOperatorType.EQUALS,
                         values: ["value1"],
                     },
                     {
                         member: "field2",
-                        operator: CubeOperatorType.EQUALS,
+                        operator: enums_1.CubeOperatorType.EQUALS,
                         values: ["value2"],
                     },
                 ],
@@ -341,18 +343,18 @@ describe("transformCubeFiltersToJsFilter", () => {
                 or: [
                     {
                         member: "field3",
-                        operator: CubeOperatorType.EQUALS,
+                        operator: enums_1.CubeOperatorType.EQUALS,
                         values: ["value3"],
                     },
                     {
                         member: "field4",
-                        operator: CubeOperatorType.EQUALS,
+                        operator: enums_1.CubeOperatorType.EQUALS,
                         values: ["value4"],
                     },
                 ],
             },
         ];
-        const filterFunction = transformCubeFiltersToJsFilter(filters);
+        var filterFunction = (0, index_1.transformCubeFiltersToJsFilter)(filters);
         expect(filterFunction({
             field1: "value1",
             field2: "value2",
